@@ -1,0 +1,4 @@
+create 2 structs one for each page 
+one that has only the artist 
+the other is artists with locations and date
+this way we store the data once and don't keep making calls to retrieve the data

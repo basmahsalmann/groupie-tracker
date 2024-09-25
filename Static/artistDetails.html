@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Details</title>
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+
+    <style>
+        #artists-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        li {
+            list-style-type: none;
+        }
+     
+        .name{
+           text-align: center;
+        }
+       
+    </style>
+</head>
+
+<body>
+    <section id="artists-section">
+        <div class="sec">
+                <h2 class="name">{{.Artists.Name}}</h2>
+                <img src="{{.Artists.Image}}" alt="{{.Artists.Name}}">
+                <p>Creation Date: {{.Artists.CreationDate}}</p>
+                <p>First Album: {{.Artists.FirstAlbum}}</p>
+                <p>Members:</p>
+                <ul>
+                    {{range .Artists.Members}}
+                    <li>{{.}}</li>
+                    {{end}}
+                </ul>
+
+            </div>
+
+        <h2>Concerts</h2>
+        <ul>
+            <li>
+                <strong>Dates and Locations:</strong><br>
+                <ul>
+                    {{range $location, $dates := .Relation.DatesLocation}}
+                    <li>
+                        <strong>{{$location}}:</strong> {{range $index, $date := $dates}}{{if $index}},
+                        {{end}}{{$date}}{{end}}
+                    </li>
+                    {{end}}
+                </ul>
+            </li>
+        </ul>
+
+    </section>
+</body>
+
+</html>
